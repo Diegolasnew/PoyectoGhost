@@ -46,5 +46,5 @@ function Ghost:update( dt )
 end
 
 function Ghost:draw()
-	gfx.draw(self.sprite, self.x, self.y)
+	gfx.draw(self.sprite, self.x-Camera.x, self.y-Camera.y)
 end
