@@ -13,6 +13,7 @@ require("editor")
 require("ghost")
 require("keyEvent")
 require("camera")
+require("save")
 
 function love.load( )
 	fant = Ghost:new(50,50)
@@ -48,6 +49,6 @@ function love.draw( )
 end
 
 function love.quit()
-	
+	Save:saveMap(Camera.thing, "mataTest")
 	print("Gracias por jugar. ¡Que bueno que no se crasho!")
 end

@@ -6,6 +6,11 @@ function love.keypressed(key)
    if key == "escape" then
    		love.event.quit()
    end
+
+   if key == "f4" then
+   		Camera.thing.tileArray = getEmptyArr( Camera.thing.w, Camera.thing.h)
+   end
+
 end
 
 function love.mousereleased( x, y, button )

@@ -30,16 +30,16 @@ end
 
 function Ghost:update( dt )
 	self.dt = dt
-	if love.keyboard.isDown("up") then
+	if key.isDown("up") or key.isDown("w")then
 		self:up()
 	end
-	if love.keyboard.isDown("down") then
+	if key.isDown("down") or key.isDown("s")then
 		self:down()
 	end
-	if love.keyboard.isDown("left") then
+	if key.isDown("left") or key.isDown("a")then
 		self:left()
 	end
-	if love.keyboard.isDown("right") then
+	if key.isDown("right") or key.isDown("d")then
 		self:right()
 	end
 
