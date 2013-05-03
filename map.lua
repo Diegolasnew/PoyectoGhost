@@ -27,8 +27,8 @@ function Map:update( dt )
     self.batch:clear()
     local inix = math.max(0, math.floor(Camera.x/tileSize))
     local iniy = math.max(0, math.floor(Camera.y/tileSize))
-    local finx = math.min(math.floor((Camera.w+Camera.x)/tileSize), self.w)
-    local finy = math.min(math.floor((Camera.h+Camera.y)/tileSize), self.h)
+    local finx = math.min(math.floor((Camera.w+Camera.x)/tileSize), self.w-1)
+    local finy = math.min(math.floor((Camera.h+Camera.y)/tileSize), self.h-1)
 
 	for i=inix, finx do
 		for k=iniy, finy do

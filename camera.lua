@@ -9,8 +9,8 @@ function Camera:init( x, y , w, h, thing)
 end
 
 function Camera:update( dt )
-	self.x = fant.x - self.w/2
-	self.y = fant.y - self.h/2
+	self.x = math.floor(fant.x - self.w/2)
+	self.y = math.floor(fant.y - self.h/2)
 
 	self.thing:update(dt)
 	

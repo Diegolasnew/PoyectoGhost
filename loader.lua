@@ -39,7 +39,7 @@ function Loader:loadEsentials(  )
 	tileEmpty[5][10] = 1
 	tileEmpty[6][10] = 1
 
-	mapEmpty = Map:new(tileEmpty, 0, 0, 50, 50)
+	local mapEmpty = Map:new(tileEmpty, 0, 0, 50, 50)
 
 	Camera:init(0, 0, 800, 600, mapEmpty)
 		

@@ -1,6 +1,7 @@
 gfx = love.graphics
 fsy = love.filesystem
 key = love.keyboard
+mou = love.mouse
 defColor={255,255,255}
 
 require("constant")
@@ -13,15 +14,11 @@ require("ghost")
 require("keyEvent")
 require("camera")
 
-
 function love.load( )
-	log = true;
 	fant = Ghost:new(50,50)
-	Loader:loadEsentials()
-	editorMode = false
+	Loader:loadEsentials( )
 	Editor:init( )
 	gfx.setBackgroundColor(255,255,255)
-
 end
 
 function love.update( dt )
@@ -51,5 +48,6 @@ function love.draw( )
 end
 
 function love.quit()
-  print("Gracias por jugar. ¡Que bueno que no se crasho!")
+	
+	print("Gracias por jugar. ¡Que bueno que no se crasho!")
 end
