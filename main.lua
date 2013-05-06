@@ -6,6 +6,7 @@ defColor={255,255,255}
 
 require("constant")
 require("resources")
+require("guy")
 require("loader")
 require("log")
 require("map")
@@ -16,7 +17,6 @@ require("camera")
 require("save")
 
 function love.load( )
-	fant = Ghost:new(50,50)
 	Loader:loadEsentials( )
 	Editor:init( )
 	gfx.setBackgroundColor(255,255,255)
@@ -24,7 +24,8 @@ end
 
 function love.update( dt )
 	logUpdate( dt )
-	fant:update(dt)
+
+	Loader.pjs[0]:update(dt)
 
 	if editorMode then
 		Editor:update( dt )
@@ -37,7 +38,7 @@ end
 function love.draw( )
 	Camera:draw()
 	gfx.setColor(255,255,255,150)
-	fant:draw()
+	Loader.pjs[0]:draw()
 	gfx.setColor(defColor)
 	if log then
 		logDraw( )
@@ -50,5 +51,5 @@ end
 
 function love.quit()
 	Save:saveMap(Camera.thing, "mataTest")
-	print("Gracias por jugar. ¡Que bueno que no se crasho!")
+	print("¡Que bueno que no se crasho!")
 end

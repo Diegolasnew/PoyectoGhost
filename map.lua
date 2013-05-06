@@ -43,4 +43,7 @@ end
 
 function Map:draw(  )
 	gfx.draw(self.batch, -Camera.x, -Camera.y)
+	gfx.setColor(255,0,0)
+	gfx.rectangle( "line", -Camera.x, -Camera.y, self.w*tileSize, self.h*tileSize )
+	gfx.setColor(defColor)
 end

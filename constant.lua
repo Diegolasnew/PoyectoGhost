@@ -4,6 +4,10 @@ editorMode = true
 tileSize = 25
 spriteRate = 500
 
+guyVx = 250
+guyVy = 250
+
+
 
 function string:split(delimiter) --source internet :D
 	local result = {}

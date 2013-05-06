@@ -31,32 +31,44 @@ function Loader:loadEsentials(  )
 
 	local mapEmpty = Map:new(tileEmpty, 0, 0, 50, 50)
 
+	local spritePj = gfx.newImage('data/gfx/guy1.png')
+
+	local PJ = Guy:new(400, 50, 43, 71, spritePj)
+
+	table.insert(self.maps, mapEmpty)
+	self.pjs[0] = PJ
+
 	Camera:init(0, 0, 800, 600, mapEmpty)
 		
 end
 
 function Loader:loadMap( mapName )
-	local data = fsy.read(mapName..".mep")
-	local split1 = data:split("?")
-	local split2 = split1[1]:split("-")
-	local split3 = split1[2]:split("/")
+	if fsy.exists(mapName..".mep") then
 
-	local w = tonumber(split2[1])
-	local h = tonumber(split2[2])
-	local arr = getEmptyArr(w, h)
+		local data = fsy.read(mapName..".mep")
+		local split1 = data:split("?")
+		local split2 = split1[1]:split("-")
+		local split3 = split1[2]:split("/")
 
-	for i, v in pairs(split3) do
-		local tile = v:split("-")
-		if table.getn(tile) == 3 then
-			local i = tonumber(tile[1])
-			local j = tonumber(tile[2])
-			local t = tonumber(tile[3])
+		local w = tonumber(split2[1])
+		local h = tonumber(split2[2])
+		local arr = getEmptyArr(w, h)
 
-			arr[i][j] = t
+		for i, v in pairs(split3) do
+			local tile = v:split("-")
+			if table.getn(tile) == 3 then
+				local i = tonumber(tile[1])
+				local j = tonumber(tile[2])
+				local t = tonumber(tile[3])
+
+				arr[i][j] = t
+			end
 		end
+		return arr
+	else
+		return getEmptyArr(50, 50)
 	end
 
-	return arr
 end
 
 function Loader:loadPj ( PjName )

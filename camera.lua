@@ -9,13 +9,12 @@ function Camera:init( x, y , w, h, thing)
 end
 
 function Camera:update( dt )
-	self.x = math.floor(fant.x - self.w/2)
-	self.y = math.floor(fant.y - self.h/2)
-
+	self.x = math.floor(Loader.pjs[0].x - self.w/2)
+	self.y = math.floor(Loader.pjs[0].y - self.h/2)
 	self.thing:update(dt)
-	
 end
 
 function Camera:draw(  )
 	self.thing:draw()
 end
+
