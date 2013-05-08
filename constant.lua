@@ -4,9 +4,9 @@ editorMode = true
 tileSize = 25
 spriteRate = 500
 
-guyMaxVx = 250
-guyMaxVy = 800
-guyAcx = 250
+guyMaxVx = 450
+guyMaxVy = 1000
+guyAcx = 1000
 guyAcy = 3000
 
 state = {

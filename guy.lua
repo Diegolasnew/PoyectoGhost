@@ -55,19 +55,6 @@ function Guy:down(  )
 	end
 end
 
-function Guy:left(  )
-	local nextX = self.x - guyMaxVx*self.dt
-	if not self:findColison( nextX, self.y ) then
-		self.x = math.floor(nextX)
-	end
-end
-function Guy:right(  )
-	local nextX = self.x + guyMaxVx*self.dt
-	if not self:findColison( nextX, self.y ) then
-		self.x = math.floor(nextX)
-	end
-end
-
 function Guy:addGravity(  )
 	local nextVy = math.min(self.vy + guyAcy * self.dt, guyMaxVy)
 	local nextY = math.floor(self.y + nextVy * self.dt)
@@ -77,14 +64,57 @@ function Guy:addGravity(  )
 		self.vy = nextVy
 		self.y = nextY
 	else
-		self.y = y*tileSize - self.h - 0.1
+		if nextVy<0 then
+			self.y = y*tileSize + tileSize + 0.1
+		else	
+			self.y = y*tileSize - self.h - 0.1
+		end
 		self.vy = 0
 		self.state = state.normal
 	end
 end
 
+function Guy:addMovement(  )
+	local nextVx = math.min(self.vx + guyAcx * self.dt, guyMaxVx)
+	local nextX = math.floor(self.x + nextVx * self.dt)
+
+
+end
+
 function Guy:jump(  )
 	self.vy = -800
+end
+function Guy:left(  )
+	local nextVx = math.max(self.vx - guyAcx * self.dt, -guyMaxVx)
+	local nextX = math.floor(self.x + nextVx * self.dt)
+	local colision, x, y = self:findColison(nextX, self.y)
+
+	if not colision then
+		self.vx = nextVx
+		self.x = nextX
+	else
+		self.vx = 0
+	end
+
+end
+
+function Guy:right(	 )
+	local nextVx = math.min(self.vx + guyAcx * self.dt, guyMaxVx)
+	local nextX = math.floor(self.x + nextVx * self.dt)
+	local colision, x, y = self:findColison(nextX, self.y)
+
+	if not colision then
+		self.vx = nextVx
+		self.x = nextX
+	else
+		self.vx = 0
+	end
+end
+
+function Guy:stop(  )
+	if self.vx ~= 0 then
+		
+	end
 end
 
 function Guy:update( dt )
@@ -103,10 +133,10 @@ function Guy:update( dt )
 
 	if key.isDown("left") or key.isDown("a")then
 		self:left()
-	end
-
-	if key.isDown("right") or key.isDown("d")then
+	elseif key.isDown("right") or key.isDown("d")then
 		self:right()
+	else
+		self.vx = 0
 	end
 
 	self.batch:bind()
