@@ -68,10 +68,9 @@ function Loader:loadMap( mapName )
 	else
 		return getEmptyArr(50, 50)
 	end
-
 end
 
 function Loader:loadPj ( PjName )
-
+	
 end
 

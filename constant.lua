@@ -4,9 +4,17 @@ editorMode = true
 tileSize = 25
 spriteRate = 500
 
-guyVx = 250
-guyVy = 250
+guyMaxVx = 250
+guyMaxVy = 800
+guyAcx = 250
+guyAcy = 3000
 
+state = {
+	normal = 0,
+	jumping = 1,
+	falling = 2,
+	other = 3,
+}
 
 
 function string:split(delimiter) --source internet :D
